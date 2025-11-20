@@ -11,8 +11,8 @@ export interface UserDocument extends User, Document {
   timestamps: true,
   toJSON: {
     virtuals: true,
-    transform: (_, ret) => {
-      ret.id = ret._id;
+    transform: (_, ret: any) => {
+      //ret.id = ret._id;
       delete ret._id;
       delete ret.__v;
       return ret;
