@@ -28,6 +28,10 @@
   --color-black: #1f1b1b;
 }
 
+.mobile-app {
+  max-width: 430px;  /* Ancho típico de móviles */
+  margin: 0 auto;
+}
 
 html,
 body {

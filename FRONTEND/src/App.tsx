@@ -1,11 +1,10 @@
-import Router from "./routes/Routes";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes/Routes";
 
-import { useRoutes } from "react-router-dom";
-
-function App() {
-  const routing = useRoutes(Router);
-
-  return <>{routing}</>;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  );
 }
-
-export default App;
