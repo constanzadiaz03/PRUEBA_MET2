@@ -1,10 +1,12 @@
-import { BrowserRouter } from "react-router-dom";
-import Routes from "./routes/Routes";
+import MobileWrapper from "./components/MobileWrapper";
+import Home from "./views/home/Home";
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <MobileWrapper>
+      <Home />
+    </MobileWrapper>
   );
 }
+
+export default App;
