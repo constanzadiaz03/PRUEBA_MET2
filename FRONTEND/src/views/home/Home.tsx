@@ -1,65 +1,138 @@
-export default function Home() {
+export default function home() {
   return (
-  <div className="w-full bg-white px-5 pb-20">
+    <div className="w-full h-screen bg-white flex flex-col overflow-hidden rounded-[30px]">
 
-      {/* Phone Wrapper */}
-      <div className="w-[390px] min-h-screen bg-white px-5 pb-20 relative overflow-hidden">
+      {/* Área scrollable */}
+      <div className="flex-1 overflow-y-auto no-scrollbar">
 
         {/* HEADER */}
-        <div className="flex items-center justify-between mt-4">
+        <div className="px-5 pt-10 flex items-center justify-between">
+
+          {/* Izquierda: Avatar + Nombre */}
+          <div className="flex items-center gap-2">
+            <img src="public/img/avatar.png" alt="avatar" className="w-10 h-10 rounded-full" />
+
+            <div className="px-3 py-1 bg-[#F4F6FA] rounded-full text-[#1B1E28] text-[14px] font-medium">
+              Jorge
+            </div>
+          </div>
+
+          {/* Derecha: iconos redondos */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gray-300" />
-            <span className="font-semibold text-lg">Jorge</span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-gray-200" />
-            <button className="w-10 h-10 rounded-full bg-gray-200" />
-            <button className="w-10 h-10 rounded-full bg-gray-200" />
-          </div>
-        </div>
-
-        {/* TITLE */}
-        <h1 className="text-3xl font-bold leading-tight mt-6">
-          Conoce a lo largo<br />
-          de <span className="text-blue-500">Chile!</span>
-        </h1>
-
-        {/* SUBHEADER */}
-        <div className="flex items-center justify-between mt-8">
-          <h2 className="font-semibold text-lg">Mejores destinos</h2>
-          <button className="text-blue-500 font-medium">Ver todo</button>
-        </div>
-
-        {/* CARDS - Horizontal Scroll */}
-        <div className="flex gap-4 mt-4 overflow-x-auto pb-2">
-          <div className="min-w-[240px] bg-white rounded-2xl shadow-md p-3">
-            <div className="w-full h-[150px] bg-gray-300 rounded-xl mb-3 relative">
-              <button className="absolute top-3 right-3 bg-white/70 rounded-full p-1 backdrop-blur">
-                🔖
-              </button>
+            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center text-[14px]">
+              ES
             </div>
 
-            <p className="font-semibold text-base">Torres del Paine</p>
-
-            <div className="flex items-center text-sm text-gray-500 mt-1">
-              <span className="mr-1">📍</span> Magallanes y la Antártica
+            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
+              <img src="public/img/salida.png" alt="log-out" className="w-5 h-5" />
             </div>
 
-            <div className="flex items-center gap-1 mt-2 text-yellow-500 font-semibold">
-              ⭐ 4.8
+            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
+              <img src="public/img/notificacion.png" alt="notificacion" className="w-5 h-5" />
             </div>
           </div>
         </div>
 
-        {/* NAVBAR INFERIOR */}
-        <div className="w-full h-16 bg-white border-t flex items-center justify-around absolute bottom-0 left-0">
-          <button className="text-2xl">🏠</button>
-          <button className="text-2xl">📊</button>
-          <button className="text-2xl">⚙️</button>
+        {/* TÍTULO */}
+        <div className="px-5 mt-10 mb-2">
+          <h1 className="text-[32px] font-light leading-[42px] text-[#1B1E28]">
+            Conoce a lo largo<br />
+            de <span className="font-semibold text-[#0A84FF]">Chile!</span>
+          </h1>
+        </div>
+
+        {/* SUBTÍTULO */}
+        <div className="px-5 flex justify-between items-center mt-6 mb-4">
+          <span className="text-[18px] font-bold text-[#1B1E28]">Mejores destinos</span>
+          <span className="text-[14px] text-[#0A84FF]">Ver todo</span>
+        </div>
+
+        {/* DESTINOS (scroll horizontal) */}
+        <div className="flex gap-6 overflow-x-auto no-scrollbar px-5 pb-10">
+
+          {/* CARD 1 */}
+          <div className="min-w-[260px] bg-white rounded-[25px] shadow-md pb-4">
+            <div className="relative">
+              <img src="public/img/torresdelpaine.jpg" alt="torres del paine" className="w-full h-[200px] rounded-t-[25px] object-cover" />
+              <div className="absolute right-3 top-3 w-8 h-8 bg-white/70 rounded-full flex items-center justify-center backdrop-blur">
+                <img src="public/img/pin.png" alt="pin" className="w-4 h-4" />
+              </div>
+            </div>
+
+            <div className="px-4 mt-3 text-[16px] font-semibold text-[#1B1E28]">
+              Torres del Paine
+            </div>
+
+            <div className="px-4 text-[14px] flex items-center gap-1 text-[#7D848D]">
+              <img src="public/img/ubicacion.png" alt="ubicacion" className="w-3 h-3" />
+              Magallanes y la Antártica
+            </div>
+
+            <div className="px-4 flex items-center gap-1 mt-1 text-[14px] text-[#1B1E28]">
+              <img src="public/img/estrella.png" alt="estrella" className="w-3 h-3" />
+              4.8
+            </div>
+          </div>
+
+          {/* CARD 2 */}
+          <div className="min-w-[260px] bg-white rounded-[25px] shadow-md pb-4">
+            <div className="relative">
+              <img src="public/img/cajondelmaipo.jpg" alt="cajon del maipo" className="w-full h-[200px] rounded-t-[25px] object-cover" />
+              <div className="absolute right-3 top-3 w-8 h-8 bg-white/70 rounded-full flex items-center justify-center backdrop-blur">
+                <img src="public/img/pin.png" alt="pin" className="w-4 h-4" />
+              </div>
+            </div>
+
+            <div className="px-4 mt-3 text-[16px] font-semibold text-[#1B1E28]">
+              Cajón del Maipo
+            </div>
+
+            <div className="px-4 text-[14px] flex items-center gap-1 text-[#7D848D]">
+              <img src="public/img/ubicacion.png" alt="ubicacion" className="w-3 h-3" />
+              San José de Maipo
+            </div>
+
+            <div className="px-4 flex items-center gap-1 mt-1 text-[14px] text-[#1B1E28]">
+              <img src="public/img/estrella.png" alt="estrella" className="w-3 h-3" />
+              4.8
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* BOTTOM BAR */}
+      <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
+
+        <div className="flex flex-col items-center">
+          <img src="public/img/home.png" alt="home" className="w-6" />
+          <span className="text-[12px] text-[#007AFF]">Inicio</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img src="public/img/calendar.png" alt="calendar" className="w-6" />
+          <span className="text-[12px] text-[#7D848D]">Calendario</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
+            <img src= "public/img/buscar.png" alt="buscar" className="w-6"/>
+          </div>
+            <span className="text-[#007AFF] text-[12px] mt-1">Buscar</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img src="public/img/mensaje.png" alt="chat" className="w-6" />
+          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img src="public/img/perfil.png" alt="perfil" className="w-6" />
+          <span className="text-[12px] text-[#7D848D]">Perfil</span>
         </div>
 
       </div>
+
     </div>
   );
 }

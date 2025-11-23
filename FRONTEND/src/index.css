@@ -48,6 +48,13 @@ body {
   align-items: center;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
