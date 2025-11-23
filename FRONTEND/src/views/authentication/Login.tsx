@@ -70,7 +70,7 @@ export default function Login() {
 
           <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
             <div className="text-[#7D848D]">O inicia sesión con</div>
-            {/* social icons - placeholder images in public/img */}
+            {/* social icons - placeholder images in img */}
             <img src="/img/fb.png" alt="facebook" className="w-10 h-10" />
             <img src="/img/ig.png" alt="instagram" className="w-10 h-10" />
             <img src="/img/x.png" alt="twitter" className="w-10 h-10" />

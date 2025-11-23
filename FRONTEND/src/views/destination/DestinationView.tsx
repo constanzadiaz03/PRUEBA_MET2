@@ -24,13 +24,13 @@ const destinos: Record<string, DestinationData> = {
       precio: "$5.200",
       descripcion:
         "En el Parque Nacional Torres del Paine, puedes disfrutar de una gran variedad de actividades, incluyendo trekking, navegación, avistamiento de fauna, y exploración de paisajes naturales.",
-      imagen: "/public/img/paine2.png",
+      imagen: "/img/paine2.png",
       miniaturas: [
-        "/public/img/paine2.png",
-        "/public/img/torresdelpaine.jpg",
-        "/public/img/torres3.png",
-        /*"/public/img/p4.jpg",
-        "/public/img/p5.jpg",*/
+        "/img/paine2.png",
+        "/img/torresdelpaine.jpg",
+        "/img/torres3.png",
+        /*"/img/p4.jpg",
+        "/img/p5.jpg",*/
       ],
     },
   };
@@ -49,7 +49,7 @@ const destinos: Record<string, DestinationData> = {
           <button
             className="w-9 h-9 bg-white/70 rounded-full flex items-center justify-center backdrop-blur"
             onClick={() => navigate(-1) || navigate("/home")}>
-            <img src="/public/img/atras.png" className="w-4" />
+            <img src="/img/atras.png" className="w-4" />
           </button>
         </div>
 
@@ -74,7 +74,7 @@ const destinos: Record<string, DestinationData> = {
         {/* INFO EXTRA */}
         <div className="flex items-center gap-3 mt-3 text-[14px] text-[#7D848D]">
           <div className="flex items-center gap-1">
-            <img src="/public/img/ubicacion.png" className="w-4 h-4" />
+            <img src="/img/ubicacion.png" className="w-4 h-4" />
             {data.region}
           </div>
           <div className="flex items-center gap-1">

@@ -23,7 +23,7 @@ export default function Home() {
         <div className="px-5 pt-10 flex items-center justify-between">
 
           <div className="flex items-center gap-2">
-            <img src="public/img/avatar.png" alt="avatar" className="w-10 h-10 rounded-full" />
+            <img src="img/avatar.png" alt="avatar" className="w-10 h-10 rounded-full" />
 
             <div className="px-3 py-1 bg-[#F4F6FA] rounded-full text-[#1B1E28] text-[14px] font-medium">
               Jorge
@@ -39,11 +39,11 @@ export default function Home() {
               onClick={handleLogout}
               className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center hover:bg-[#e5e7eb]"
             >
-              <img src="public/img/salida.png" alt="log-out" className="w-5 h-5" />
+              <img src="img/salida.png" alt="log-out" className="w-5 h-5" />
             </button>
 
             <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
-              <img src="public/img/notificacion.png" alt="notificacion" className="w-5 h-5" />
+              <img src="img/notificacion.png" alt="notificacion" className="w-5 h-5" />
             </div>
           </div>
         </div>
@@ -70,9 +70,9 @@ export default function Home() {
             onClick={() => goToDestination("paine")}>
             
             <div className="relative">
-              <img src="public/img/torresdelpaine.jpg" alt="torres del paine" className="w-full h-[200px] rounded-t-[25px] object-cover" />
+              <img src="img/torresdelpaine.jpg" alt="torres del paine" className="w-full h-[200px] rounded-t-[25px] object-cover" />
               <div className="absolute right-3 top-3 w-8 h-8 bg-white/70 rounded-full flex items-center justify-center backdrop-blur">
-                <img src="public/img/pin.png" alt="pin" className="w-4 h-4" />
+                <img src="img/pin.png" alt="pin" className="w-4 h-4" />
               </div>
             </div>
 
@@ -81,24 +81,24 @@ export default function Home() {
             </div>
 
             <div className="px-4 text-[14px] flex items-center gap-1 text-[#7D848D]">
-              <img src="public/img/ubicacion.png" className="w-3 h-3" />
+              <img src="img/ubicacion.png" className="w-3 h-3" />
               Magallanes y la Antártica
             </div>
 
             <div className="px-4 flex items-center gap-1 mt-1 text-[14px] text-[#1B1E28]">
-              <img src="public/img/estrella.png" alt="estrella" className="w-3 h-3" />
+              <img src="img/estrella.png" alt="estrella" className="w-3 h-3" />
               4.8
             </div>
           </div>
 
           {/* CAJÓN DEL MAIPO */}
           <div className="min-w-[260px] bg-white rounded-[25px] shadow-md pb-4 cursor-pointer"
-            onClick={() => goToDestination("cajon")}>
+            onClick={() => goToDestination("cajon_maipo")}>
             
             <div className="relative">
-              <img src="public/img/cajondelmaipo.jpg" alt="cajon del maipo" className="w-full h-[200px] rounded-t-[25px] object-cover" />
+              <img src="/img/cajondelmaipo.jpg" alt="cajon del maipo" className="w-full h-[200px] rounded-t-[25px] object-cover" />
               <div className="absolute right-3 top-3 w-8 h-8 bg-white/70 rounded-full flex items-center justify-center backdrop-blur">
-                <img src="public/img/pin.png" alt="pin" className="w-4 h-4" />
+                <img src="/img/pin.png" alt="pin" className="w-4 h-4" />
               </div>
             </div>
 
@@ -107,12 +107,12 @@ export default function Home() {
             </div>
 
             <div className="px-4 text-[14px] flex items-center gap-1 text-[#7D848D]">
-              <img src="public/img/ubicacion.png" className="w-3 h-3" />
+              <img src="/img/ubicacion.png" className="w-3 h-3" />
               San José de Maipo
             </div>
 
             <div className="px-4 flex items-center gap-1 mt-1 text-[14px] text-[#1B1E28]">
-              <img src="public/img/estrella.png" alt="estrella" className="w-3 h-3" />
+              <img src="/img/estrella.png" alt="estrella" className="w-3 h-3" />
               4.8
             </div>
           </div>
@@ -124,29 +124,29 @@ export default function Home() {
       <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
 
         <div className="flex flex-col items-center">
-          <img src="public/img/home.png" alt="home" className="w-6" />
+          <img src="img/home.png" alt="home" className="w-6" />
           <span className="text-[12px] text-[#007AFF]">Inicio</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="public/img/calendar.png" alt="calendar" className="w-6" />
+          <img src="img/calendar.png" alt="calendar" className="w-6" />
           <span className="text-[12px] text-[#7D848D]">Calendario</span>
         </div>
 
         <div className="flex flex-col items-center">
           <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
-            <img src="public/img/buscar.png" alt="buscar" className="w-6"/>
+            <img src="img/buscar.png" alt="buscar" className="w-6"/>
           </div>
           <span className="text-[#007AFF] text-[12px] mt-1">Buscar</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="public/img/mensaje.png" alt="chat" className="w-6" />
+          <img src="img/mensaje.png" alt="chat" className="w-6" />
           <span className="text-[12px] text-[#7D848D]">Mensajes</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="public/img/perfil.png" alt="perfil" className="w-6" />
+          <img src="img/perfil.png" alt="perfil" className="w-6" />
           <span className="text-[12px] text-[#7D848D]">Perfil</span>
         </div>
 

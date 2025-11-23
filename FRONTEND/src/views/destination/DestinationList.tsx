@@ -7,7 +7,7 @@ const destinations = [
     region: "Magallanes",
     price: "5200",
     rating: "4.8",
-    src: "/img/torresdelpaine.jpg"
+    image: "/img/torresdelpaine.jpg"
   },
   {
     id: "atacama",

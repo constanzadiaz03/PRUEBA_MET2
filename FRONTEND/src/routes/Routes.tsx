@@ -33,6 +33,7 @@ const DestinationView = Loadable(
   lazy(() => import("../views/destination/DestinationView"))
 );
 
+
 /* ****End Pages***** */
 
 const Router = [
@@ -92,7 +93,6 @@ const Router = [
   path: "/destination/:id",
   element: <DestinationView />,
 },
-
 ];
 
 

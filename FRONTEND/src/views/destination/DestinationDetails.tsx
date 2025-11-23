@@ -1,3 +1,5 @@
+
+
 import { useParams } from "react-router-dom";
 interface DestinationData {
   name: string;
@@ -15,7 +17,7 @@ const destinationsData: Record<string, DestinationData> = {
     price: "5200",
     rating: "4.8",
     description: "Un parque con trekking y paisajes hermosos.",
-    image: "/img/paine.jpg"
+    image: "/img/torresdelpaine.jpg"
   },
   atacama: {
     name: "San Pedro de Atacama",

@@ -19,7 +19,7 @@ Este template utiliza las siguientes tecnologías:
 
 ```
 /
-├── public/                # Archivos estáticos accesibles públicamente
+├──                 # Archivos estáticos accesibles públicamente
 ├── src/                   # Código fuente principal
 │   ├── assets/            # Imágenes, iconos y recursos estáticos
 │   │   ├── icons/         # Iconos SVG personalizados
