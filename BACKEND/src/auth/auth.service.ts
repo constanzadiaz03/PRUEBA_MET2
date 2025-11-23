@@ -1,86 +1,28 @@
-// src/auth/auth.service.ts
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcryptjs';
 import { UsersService } from '../users/users.service';
-import { RegisterDto } from './dto/register.dto';
-import { LoginDto } from './dto/login.dto';
-import { CreateUserDto } from '../users/dto/create-user.dto';
+import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
-  ) {}
+  constructor(private usersService: UsersService, private jwtService: JwtService) {}
 
-  async validateUser(email: string, password: string): Promise<any> {
+  async login(email: string, password: string) {
     const user = await this.usersService.findByEmail(email);
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const { password, ...result } = user.toObject();
-      return result;
-    }
-    return null;
-  }
+    if (!user) throw new UnauthorizedException('Credenciales incorrectas');
 
-  async login(loginDto: LoginDto) {
-    const user = await this.validateUser(loginDto.email, loginDto.password);
-    if (!user) {
-      throw new UnauthorizedException('Credenciales inválidas');
-    }
-
-    // Accedemos a la propiedad id en lugar de _id
-    const payload = { email: user.email, sub: user._id.toString(), role: user.role };
-
-    return {
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        lastName: user.lastName,
-        role: user.role,
-      },
-      access_token: this.jwtService.sign(payload),
-    };
-  }
-
-  async register(registerDto: RegisterDto) {
-    // Creamos un objeto CreateUserDto explícitamente para asegurar compatibilidad de tipos
-    const createUserDto: CreateUserDto = {
-      name: registerDto.name,
-      lastName: registerDto.lastName,
-      email: registerDto.email,
-      password: registerDto.password,
-    };
-
-    // Pasamos el DTO correcto al servicio de usuarios
-    const newUser = await this.usersService.create(createUserDto);
-
-    // Convertimos a un objeto plano para manejar las propiedades correctamente
-    const user = newUser.toObject ? newUser.toObject() : newUser;
-
-    // Usamos id en lugar de _id
-    const userId = user.id || user._id?.toString();
+    const ok = await bcrypt.compare(password, user.password);
+    if (!ok) throw new UnauthorizedException('Credenciales incorrectas');
 
     const payload = {
+      sub: user._id.toString(),
       email: user.email,
-      sub: userId,
-      role: user.role,
+      tipo: user.tipo,
     };
 
     return {
-      user: {
-        id: userId,
-        email: user.email,
-        name: user.name,
-        lastName: user.lastName,
-        role: user.role,
-      },
       access_token: this.jwtService.sign(payload),
+      user: { id: user._id.toString(), email: user.email, tipo: user.tipo, nombre: user.nombre ?? null },
     };
-  }
-
-  async me(userId: string) {
-    return this.usersService.findOne(userId);
   }
 }

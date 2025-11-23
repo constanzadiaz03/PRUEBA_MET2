@@ -1,37 +1,33 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import * as bcrypt from 'bcryptjs';
-import { User } from './schemas/user.schema';
+import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dto/create-user.dto';
+import { User } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectModel(User.name)
-    private userModel: Model<User>,
-  ) {}
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async findByEmail(email: string): Promise<User | null> {
-    return this.userModel.findOne({ email });
+  async create(dto: CreateUserDto): Promise<User> {
+    const exists = await this.userModel.findOne({ email: dto.email }).exec();
+    if (exists) throw new ConflictException('Email ya registrado');
+
+    const hashed = await bcrypt.hash(dto.password, 10);
+    const user = new this.userModel({ ...dto, password: hashed });
+    return user.save();
   }
 
   async findOne(id: string): Promise<User | null> {
-    return this.userModel.findById(id);
+    return this.userModel.findById(id).exec();
   }
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
-    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
-
-    const createdUser = new this.userModel({
-      ...createUserDto,
-      password: hashedPassword,
-    });
-
-    return createdUser.save();
+  async findByEmail(email: string): Promise<User | null> {
+    return this.userModel.findOne({ email }).exec();
   }
 
-  async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+  // utilidad para seed/testing
+  async count(): Promise<number> {
+    return this.userModel.countDocuments().exec();
   }
 }
