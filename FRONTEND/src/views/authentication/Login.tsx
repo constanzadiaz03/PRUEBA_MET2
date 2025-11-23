@@ -1,161 +1,122 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  IconButton,
-  InputLabel,
-  Link,
-} from "@mui/material";
-import useWindowDimensions from "../../scripts/useWindowDimensions";
-import InputLogin from "../../components/mui/InputLogin";
 import { useState } from "react";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import InputPassWord from "../../components/mui/InputPassWord";
-import logo from "../../assets/EII_logo.png";
-import imagenlogin from "../../assets/login/default.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
-  const { width } = useWindowDimensions();
+export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [show, setShow] = useState(false);
 
-  const navigate = useNavigate();
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // frontend only: simulate success
+    console.log("login data", { email, password });
+    navigate("/"); // go to home (or replace per flow)
+  };
 
   return (
-    <div className="flex flex-row justify-center h-screen">
-      <div
-        className="size-full flex flex-col justify-center items-center h-full sm:[w-full] md:w-[w-full] lg:w-[50%] xl:w-[50%] 2xl:w-[50%] bg-white
-"
-      >
-        <Box
-          width="100%"
-          className="flex flex-col justify-center align-center max-w-[430px]"
-          p={4}
-          gap={width < 960 ? "16px" : "24px"}
-        >
-          <Box
-            width="100%"
-            gap="16px"
-            className="flex flex-col justify-center items-center"
-          >
-            <img alt="logo" className="h-30" src={logo} />
+    <div className="w-full h-screen bg-white flex flex-col overflow-hidden">
+      <div className="flex-1 overflow-y-auto no-scrollbar px-6 pt-8">
+        {/* header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src="/img/avatar.png" alt="avatar" className="w-10 h-10 rounded-full" />
+            <div className="px-3 py-1 bg-[#F4F6FA] rounded-full text-[#1B1E28]">Jorge</div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">ES</div>
+            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
+              <img src="/img/icon-share.svg" className="w-5 h-5" alt="share" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
+              <img src="/img/icon-bell.svg" className="w-5 h-5" alt="bell" />
+            </div>
+          </div>
+        </div>
 
-          </Box>
-          <Box
-            className="flex flex-col w-full max-w-[400px]"
-            sx={{
-              gap: width < 960 ? "16px" : "24px",
-              flexGrow: 1,
-            }}
-          >
-            <FormControl variant="standard">
-              <InputLabel
-                sx={{
-                  fontSize: "18px",
-                }}
-                shrink
-              >
-                Correo
-              </InputLabel>
-              <InputLogin
-                id="usuario"
-                type="text"
-                autoComplete="off"
-                name={`email-${Date.now()}`}
-                required
-                value={email}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </FormControl>
-            <FormControl variant="standard">
-              <InputLabel
-                sx={{
-                  fontSize: "18px",
-                }}
-                shrink
-              >
-                Contraseña
-              </InputLabel>
-              <InputPassWord
-                id="passwordLogin"
-                type={showPassword ? "text" : "password"}
-                name={`passLogin-${Date.now()}`}
-                autoComplete="off"
-                value={password}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value.length <= 30) {
-                    setPassword(e.target.value);
-                  }
-                }}
-                endAdornment={
-                  <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
-                    edge="end"
-                    style={{ marginRight: "10px" }}
-                  >
-                    {showPassword ? (
-                      <VisibilityOffOutlinedIcon />
-                    ) : (
-                      <RemoveRedEyeOutlinedIcon />
-                    )}
-                  </IconButton>
-                }
-              />
-            </FormControl>
-          </Box>
+        {/* title */}
+        <h1 className="text-[32px] font-light leading-[42px] text-[#1B1E28] mt-8">
+          Conoce a lo largo<br />
+          de <span className="font-semibold text-[#0A84FF]">Chile!</span>
+        </h1>
 
-          <Button variant="contained" sx={{ width: "100%" }} onClick={() => {}}>
-            Ingresar
-          </Button>
+        {/* form */}
+        <form onSubmit={onSubmit} className="mt-8 space-y-4">
+          <div className="bg-[#F6F7FB] rounded-xl px-4 py-3">
+            <label className="text-xs text-[#7D848D]">Correo</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="persona1.2025@gmail.com"
+              className="w-full bg-transparent outline-none mt-1 text-sm"
+              required
+            />
+          </div>
 
-          <Box className="flex flex-col justify-centeritems-center" gap={2}>
-            <Link
-              fontSize={14}
-              fontWeight={500}
-              textAlign="center"
-              onClick={() => {
-                // redirecciona a la ruta /register
-                navigate("/auth/register");
-              }}
-              sx={{
-                cursor: "pointer",
-              }}
-              underline="none"
+          <div className="bg-[#F6F7FB] rounded-xl px-4 py-3 relative">
+            <label className="text-xs text-[#7D848D]">Contraseña</label>
+            <input
+              type={show ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="**********"
+              className="w-full bg-transparent outline-none mt-1 text-sm pr-10"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShow((s) => !s)}
+              className="absolute right-3 top-[38px] text-[#7D848D] text-sm"
             >
-              Registrate aquí
-            </Link>
-            <Link
-              fontSize={14}
-              fontWeight={500}
-              textAlign="center"
-              onClick={() => {
-                // redirecciona a la ruta /auth/forgot-password
-                navigate("/auth/forgot-password");
-              }}
-              sx={{
-                cursor: "pointer",
-              }}
-              underline="none"
-            >
-              ¿Olvidaste tu contraseña?
-            </Link>
-          </Box>
-        </Box>
+              {show ? "Ocultar" : "Ver"}
+            </button>
+          </div>
+
+          <div className="flex justify-end">
+            <Link to="/auth/forgot-password" className="text-sm text-[#0A84FF]">Olvidaste tu contraseña?</Link>
+          </div>
+
+          <button className="w-full bg-[#0A84FF] text-white py-3 rounded-xl mt-2">Iniciar</button>
+
+          <div className="text-center text-sm text-[#7D848D]">
+            ¿No tienes una cuenta? <Link to="/auth/register" className="text-[#0A84FF]">Registrarse</Link>
+          </div>
+
+          <div className="flex items-center justify-center gap-4 mt-4">
+            {/* social icons - placeholder images in public/img */}
+            <img src="/img/icon-pin.svg" className="w-10 h-10" alt="fb" />
+            <img src="/img/icon-pin.svg" className="w-10 h-10" alt="ig" />
+            <img src="/img/icon-pin.svg" className="w-10 h-10" alt="tw" />
+          </div>
+        </form>
       </div>
-      <div className="justify-center items-center bg-gray-100 h-full w-[50%] hidden lg:flex">
-        <img
-          src={imagenlogin}
-          alt="Imagen GPI"
-          className="object-cover h-full w-full "
-        />
+
+      {/* bottom bar (with centered search, but here it's static for login) */}
+      <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#007AFF] rounded-md"></div>
+          <span className="text-[12px] text-[#007AFF]">Inicio</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
+          <span className="text-[12px] text-[#7D848D]">Calendario</span>
+        </div>
+        <div className="flex flex-col items-center -mt-6">
+          <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-6 h-6 border border-white rounded-md"></div>
+          </div>
+          <span className="text-[12px] text-[#007AFF] mt-1">Buscar</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
+          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
+          <span className="text-[12px] text-[#7D848D]">Perfil</span>
+        </div>
       </div>
     </div>
   );
 }
-
-export default Login;

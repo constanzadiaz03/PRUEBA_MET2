@@ -1,15 +1,15 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import Loadable from "./Loadable";
+import MobileWrapper from "../components/MobileWrapper";
+import { Outlet } from "react-router-dom";
 
 /* ***Layouts**** */
 const BlankLayout = Loadable(
   lazy(() => import("../layouts/blank-layout/BlankLayout"))
 );
 const AuthLayout = Loadable(lazy(() => import("../layouts/auth/AuthLayout")));
-const MainLayout = Loadable(
-  lazy(() => import("../layouts/dashboardLayout/MainLayout"))
-);
+
 
 /* ***End Layouts**** */
 const Error = Loadable(lazy(() => import("../views/authentication/Error")));
@@ -54,21 +54,17 @@ const Router = [
     ],
   },
   {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      {
-        path: "",
-        exact: true,
-        element: <Home />,
-      },
-      {
-        path: "home",
-        exact: true,
-        element: <Home />,
-      },
-      { path: "*", element: <Navigate to="/error/404" /> },
-    ],
+  path: "/",
+  element: (
+    <MobileWrapper>
+      <Outlet />
+    </MobileWrapper>
+  ),
+  children: [
+    { path: "", element: <Home /> },
+    { path: "home", element: <Home /> },
+    { path: "*", element: <Navigate to="/error/404" /> },
+  ],
   },
   {
     path: "/error",

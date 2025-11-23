@@ -1,141 +1,65 @@
+// src/views/authentication/ResetPass.tsx
 import { useState } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
-import { styled } from "@mui/material/styles"; 
-import logo from "../../assets/EII_logo.png";
+import { useNavigate } from "react-router-dom";
 
-// Estilos personalizados con styled para el botón
-const ResetButton = styled(Button)(() => ({
-  backgroundColor: "#1F4D5D", 
-  color: "#FFFFFF", 
-  "&:hover": {
-    backgroundColor: "#21484A", 
-  },
-  textTransform: "none",
-}));
-
-const ResetPass = () => {
+export default function ResetPass() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
-  const handleResetPassword = async () => {
-    // 1. Verificar que el email no esté vacío
-    if (!email) {
-      alert("Por favor, introduce tu email.");
-      return;
-    }
-    // }
-    console.log(`Solicitud de reseteo de contraseña para el email: ${email}`); // Simulación
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("reset", email);
+    // show verification popup page
+    navigate("/auth/verify");
   };
 
   return (
-    <Box
-      sx={{
-        bgcolor: "#EBEBEB",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Box
-        className="bg-white rounded-xl shadow-xl p-8 pt-6 max-w-[500px] md:p-12 md:pt-8"
-        sx={{
-          maxWidth: {
-            xs: "95%",
-            sm: 500,
-          },
-        }}
-      >
-        <Box
-          width="100%"
-          className=" flex flex-col justify-center items-center mb-4 md:mb-5"
-        >
-          <img alt="logo" className="h-15 sm:h-20" src={logo} />
-        </Box>
-        <Typography
-          variant="h5"
-          component="h2"
-          align="center"
-          sx={{
-            fontWeight: "bold",
-            mb: 1,
-            fontSize: {
-              xs: "1.3rem",
-              sm: "1.5rem",
-            },
-          }}
-        >
-          Reinicia tu contraseña
-        </Typography>
+    <div className="w-full h-screen bg-white flex flex-col overflow-hidden">
+      <div className="flex-1 overflow-y-auto no-scrollbar px-6 pt-8">
+        <button onClick={() => navigate(-1)} className="text-[#7D848D]">Volver</button>
 
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{
-            mb: 1,
-            fontSize: {
-              xs: "0.9rem",
-              sm: "1rem",
-            },
-          }}
-        >
-          Te enviaremos un email con instrucciones para restablecer tu
-          contraseña. Por favor, introduce tu email asociado.
-        </Typography>
+        <h1 className="text-[20px] font-bold mt-6">Reestablecer Contraseña</h1>
+        <p className="text-sm text-[#7D848D] mt-2">Ingresa tu correo para reestablecer tu contraseña</p>
 
-        <TextField
-          label="Email asociado"
-          type="email"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              borderRadius: "12px", // Bordes redondeados
-              "& fieldset": {
-                borderColor: "#EBEBEB", // Color 4 para el borde del input
-              },
-              "&:hover fieldset": {
-                borderColor: "#21484A", // Color 1 para el borde hover
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#1F4D5D", // Color 5 para el borde focused
-              },
-              fontSize: {
-                xs: "0.8rem",
-                sm: "1rem",
-              },
-            },
-            "& .MuiOutlinedInput-input": {
-              padding: "13px",
-            },
-            "& .MuiInputLabel-root": {
-              fontSize: {
-                xs: "0.8rem",
-                sm: "1rem",
-              },
-            },
-          }}
-        />
+        <form onSubmit={onSubmit} className="mt-6 space-y-4">
+          <div className="bg-[#F6F7FB] rounded-xl px-4 py-3">
+            <input
+              placeholder="persona1.2025@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-transparent outline-none"
+              required
+            />
+          </div>
 
-        <Box mt={1} display="flex" justifyContent="center">
-          <ResetButton
-            variant="contained"
-            onClick={handleResetPassword}
-            sx={{
-              fontSize: {
-                xs: "0.8rem",
-                sm: "1rem",
-              },
-            }}
-          >
-            Enviar email
-          </ResetButton>
-        </Box>
-      </Box>
-    </Box>
+          <button className="w-full bg-[#0A84FF] text-white py-3 rounded-xl mt-2">Reestablecer contraseña</button>
+        </form>
+      </div>
+
+      <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#007AFF] rounded-md"></div>
+          <span className="text-[12px] text-[#007AFF]">Inicio</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
+          <span className="text-[12px] text-[#7D848D]">Calendario</span>
+        </div>
+        <div className="flex flex-col items-center -mt-6">
+          <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-6 h-6 border border-white rounded-md"></div>
+          </div>
+          <span className="text-[12px] text-[#007AFF] mt-1">Buscar</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
+          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
+          <span className="text-[12px] text-[#7D848D]">Perfil</span>
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default ResetPass;
+}

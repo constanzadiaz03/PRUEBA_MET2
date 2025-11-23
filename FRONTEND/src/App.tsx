@@ -1,12 +1,11 @@
 import MobileWrapper from "./components/MobileWrapper";
-import Home from "./views/home/Home";
+import Router from "./routes/Routes";
+import { useRoutes } from "react-router-dom";
 
 function App() {
-  return (
-    <MobileWrapper>
-      <Home />
-    </MobileWrapper>
-  );
+  const content = useRoutes(Router);
+
+  return <MobileWrapper>{content}</MobileWrapper>;
 }
 
 export default App;
