@@ -17,12 +17,16 @@ function AuthLayout() {
     setTimeout(() => {
       checkLoginStatus();
       setIsLoading(false);
-    }, 500); // Simula una carga de 0.5 segundos
+    }, 1000); // Simula una carga de 1 segundo
   }, []);
 
   if (isLoading) {
-    return <div>Cargando...</div>; // Puedes personalizar este componente de carga con spinner
-  }
+  return (
+    <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh",fontSize:"22px"}}>
+      <span className="dots">Cargando...</span>
+    </div>
+  );
+}
 
   return <Outlet />;
 }

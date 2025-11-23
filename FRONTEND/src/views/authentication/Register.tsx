@@ -70,6 +70,7 @@ export default function Register() {
           </div>
         </form>
       </div>
+
     </div>
   );
 }

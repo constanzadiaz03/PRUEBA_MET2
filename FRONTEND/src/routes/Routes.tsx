@@ -23,6 +23,9 @@ const Register = Loadable(
 const ResetPass = Loadable(
   lazy(() => import("../views/authentication/ResetPass"))
 );
+const VerifyEmail = Loadable(
+  lazy(() => import("../views/authentication/VerifyEmail"))
+);
 
 /* ****End Pages***** */
 
@@ -48,6 +51,7 @@ const Router = [
         exact: true,
         element: <ResetPass />,
       },
+      { path: "verifyemail", exact: true, element: <VerifyEmail /> },
 
       { path: "*", element: <Navigate to="/error/404" /> },
       { path: "404", exact: true, element: <Error /> },
