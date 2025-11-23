@@ -26,6 +26,12 @@ const ResetPass = Loadable(
 const VerifyEmail = Loadable(
   lazy(() => import("../views/authentication/VerifyEmail"))
 );
+const DestinationList = Loadable(
+  lazy(() => import("../views/destination/DestinationList"))
+);
+const DestinationView = Loadable(
+  lazy(() => import("../views/destination/DestinationView"))
+);
 
 /* ****End Pages***** */
 
@@ -67,8 +73,8 @@ const Router = [
   children: [
     { path: "", element: <Home /> },
     { path: "home", element: <Home /> },
-    { path: "*", element: <Navigate to="/error/404" /> },
-  ],
+    { path: "*", element: <Navigate to="/error/404" />  },
+   ],
   },
   {
     path: "/error",
@@ -78,6 +84,16 @@ const Router = [
       { path: "404", exact: true, element: <Error /> },
     ],
   },
+  {
+  path: "/destinations",
+  element: <DestinationList />,
+},
+{
+  path: "/destination/:id",
+  element: <DestinationView />,
+},
+
 ];
+
 
 export default Router;
