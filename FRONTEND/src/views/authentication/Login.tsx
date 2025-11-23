@@ -17,28 +17,13 @@ export default function Login() {
   return (
     <div className="w-full h-screen bg-white flex flex-col overflow-hidden">
       <div className="flex-1 overflow-y-auto no-scrollbar px-6 pt-8">
-        {/* header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/img/avatar.png" alt="avatar" className="w-10 h-10 rounded-full" />
-            <div className="px-3 py-1 bg-[#F4F6FA] rounded-full text-[#1B1E28]">Jorge</div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">ES</div>
-            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
-              <img src="/img/icon-share.svg" className="w-5 h-5" alt="share" />
-            </div>
-            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
-              <img src="/img/icon-bell.svg" className="w-5 h-5" alt="bell" />
-            </div>
-          </div>
-        </div>
-
         {/* title */}
-        <h1 className="text-[32px] font-light leading-[42px] text-[#1B1E28] mt-8">
-          Conoce a lo largo<br />
-          de <span className="font-semibold text-[#0A84FF]">Chile!</span>
+        <h1 className="text-[32px] font-bold leading-[42px] text-[#1B1E28] mt-8 text-center">
+          Iniciar Sesión<br />
         </h1>
+        <h2 className="text-[16px] font-medium leading-[24px] text-[#7D848D] mt-2 text-center">
+          Inicie Sesión para continuar
+        </h2>
 
         {/* form */}
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
@@ -60,7 +45,7 @@ export default function Login() {
               type={show ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="**********"
+              placeholder="Ingrese su contraseña"
               className="w-full bg-transparent outline-none mt-1 text-sm pr-10"
               required
             />
@@ -83,39 +68,14 @@ export default function Login() {
             ¿No tienes una cuenta? <Link to="/auth/register" className="text-[#0A84FF]">Registrarse</Link>
           </div>
 
-          <div className="flex items-center justify-center gap-4 mt-4">
+          <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
+            <div className="text-[#7D848D]">O inicia sesión con</div>
             {/* social icons - placeholder images in public/img */}
-            <img src="/img/icon-pin.svg" className="w-10 h-10" alt="fb" />
-            <img src="/img/icon-pin.svg" className="w-10 h-10" alt="ig" />
-            <img src="/img/icon-pin.svg" className="w-10 h-10" alt="tw" />
+            <img src="/img/fb.png" alt="facebook" className="w-10 h-10" />
+            <img src="/img/ig.png" alt="instagram" className="w-10 h-10" />
+            <img src="/img/x.png" alt="twitter" className="w-10 h-10" />
           </div>
         </form>
-      </div>
-
-      {/* bottom bar (with centered search, but here it's static for login) */}
-      <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#007AFF] rounded-md"></div>
-          <span className="text-[12px] text-[#007AFF]">Inicio</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
-          <span className="text-[12px] text-[#7D848D]">Calendario</span>
-        </div>
-        <div className="flex flex-col items-center -mt-6">
-          <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
-            <div className="w-6 h-6 border border-white rounded-md"></div>
-          </div>
-          <span className="text-[12px] text-[#007AFF] mt-1">Buscar</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
-          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
-          <span className="text-[12px] text-[#7D848D]">Perfil</span>
-        </div>
       </div>
     </div>
   );

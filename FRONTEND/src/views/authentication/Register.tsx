@@ -70,31 +70,6 @@ export default function Register() {
           </div>
         </form>
       </div>
-
-      <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#007AFF] rounded-md"></div>
-          <span className="text-[12px] text-[#007AFF]">Inicio</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
-          <span className="text-[12px] text-[#7D848D]">Calendario</span>
-        </div>
-        <div className="flex flex-col items-center -mt-6">
-          <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
-            <div className="w-6 h-6 border border-white rounded-md"></div>
-          </div>
-          <span className="text-[12px] text-[#007AFF] mt-1">Buscar</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
-          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-6 border border-[#7D848D] rounded-md"></div>
-          <span className="text-[12px] text-[#7D848D]">Perfil</span>
-        </div>
-      </div>
     </div>
   );
 }

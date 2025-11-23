@@ -1,4 +1,12 @@
-export default function home() {
+import { useNavigate } from "react-router-dom";
+
+export default function Home() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); 
+    navigate("/auth/login"); 
+  };
   return (
     <div className="w-full h-screen bg-white flex flex-col overflow-hidden rounded-[30px]">
 
@@ -23,9 +31,13 @@ export default function home() {
               ES
             </div>
 
-            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
-              <img src="public/img/salida.png" alt="log-out" className="w-5 h-5" />
-            </div>
+            <button
+              onClick={handleLogout}
+              className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center hover:bg-[#e5e7eb]"
+            >
+            <img src="public/img/salida.png" alt="log-out" className="w-5 h-5" />
+            </button>
+
 
             <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
               <img src="public/img/notificacion.png" alt="notificacion" className="w-5 h-5" />
