@@ -7,12 +7,27 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // frontend only: simulate success
-    console.log("login data", { email, password });
-    navigate("/"); // go to home (or replace per flow)
+  const onSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const res = await fetch("http://127.0.0.1:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  const data = await res.json();
+
+  if (data.status === "ok") {
+    console.log("Login correcto");
+    navigate("/");
+  } else {
+    alert("Credenciales inválidas");
+  }
   };
+
 
   return (
     <div className="w-full h-screen bg-white flex flex-col overflow-hidden">

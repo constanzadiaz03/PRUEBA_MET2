@@ -1,4 +1,4 @@
-import ScheduleCard from "/components/ScheduleCard";
+import ScheduleCard from "../../components/ScheduleCard";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ArrowLeft, BellDot, House, UserRound, MessageCircleMore, CalendarDays, Search } from "lucide-react";

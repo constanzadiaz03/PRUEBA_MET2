@@ -1,7 +1,7 @@
 import { Heart, House, UserRound, MessageCircleMore, CalendarDays, Search, Bell } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-//import AnimatedPage from "/components/AnimatedPage.tsx";
+import AnimatedPage from "../../components/AnimatedPage.tsx";
 
 type SavedKeys = "paine" | "cajon";
 
@@ -44,7 +44,7 @@ export default function Home() {
 
 
   return (
-    //<AnimatedPage>
+    <AnimatedPage>
     <div className="w-full h-screen bg-white flex flex-col overflow-hidden rounded-[30px]">
       <div className="flex-1 overflow-y-auto no-scrollbar">
         <div className="px-5 pt-10 flex items-center justify-between">
@@ -182,6 +182,6 @@ export default function Home() {
         </div>
       </div>
     </div>
-    //</AnimatedPage>
+    </AnimatedPage>
   );
 }
