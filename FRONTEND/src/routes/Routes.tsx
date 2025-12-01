@@ -8,7 +8,6 @@ import { Outlet } from "react-router-dom";
 const BlankLayout = Loadable(
   lazy(() => import("../layouts/blank-layout/BlankLayout"))
 );
-const AuthLayout = Loadable(lazy(() => import("../layouts/auth/AuthLayout")));
 
 
 /* ***End Layouts**** */
@@ -27,12 +26,29 @@ const VerifyEmail = Loadable(
   lazy(() => import("../views/authentication/VerifyEmail"))
 );
 const DestinationList = Loadable(
-  lazy(() => import("../views/destination/DestinationList"))
+  lazy(() => import("../views/destinos/DestinationList"))
 );
 const DestinationView = Loadable(
-  lazy(() => import("../views/destination/DestinationView"))
+  lazy(() => import("../views/destinos/DestinationView"))
 );
-
+const ProfileScreen = Loadable(
+  lazy(() => import("../views/perfil/perfil").then((module) => ({ default: module.ProfileScreen })))
+);
+const EditProfileScreen = Loadable(
+  lazy(() => import("../views/perfil/editarperfil").then((module) => ({ default: module.EditProfileScreen })))
+);
+const DestinationBest = Loadable(
+  lazy(() => import("../views/destinos/DestinationBest"))
+);
+const Calendar = Loadable(
+  lazy(() => import("../views/calendar/Calendar"))
+);
+const Splash = Loadable(
+  lazy(() => import("../views/Splash"))
+);
+const Notification = Loadable(
+  lazy(() => import("../views/notification/Notification"))
+);
 
 /* ****End Pages***** */
 
@@ -44,7 +60,10 @@ const Router = [
   },
   {
     path: "/auth",
-    element: <AuthLayout />,
+    element: (
+    <><MobileWrapper>
+        <Outlet />
+      </MobileWrapper></>),
     children: [
       { path: "", exact: true, element: <Navigate to="/auth/login" /> },
       { path: "login", exact: true, element: <Login /> },
@@ -72,11 +91,20 @@ const Router = [
     </MobileWrapper>
   ),
   children: [
-    { path: "", element: <Home /> },
+    { path: "", element: <Splash /> },
     { path: "home", element: <Home /> },
-    { path: "*", element: <Navigate to="/error/404" />  },
-   ],
-  },
+
+    { path: "destinos", element: <DestinationList /> },
+    { path: "destinos/:id", element: <DestinationView /> },
+    { path: "perfil", element: <ProfileScreen /> },
+    { path: "perfil/editarperfil", element: <EditProfileScreen /> },
+    { path: "destinos/mejores", element: <DestinationBest /> },
+    { path: "calendar", element: <Calendar /> },
+    { path: "notification", element: <Notification /> },
+    { path: "*", element: <Navigate to="/error/404" />  }
+  ],
+},
+
   {
     path: "/error",
     element: <BlankLayout />,
@@ -85,14 +113,6 @@ const Router = [
       { path: "404", exact: true, element: <Error /> },
     ],
   },
-  {
-  path: "/destinations",
-  element: <DestinationList />,
-},
-{
-  path: "/destination/:id",
-  element: <DestinationView />,
-},
 ];
 
 
