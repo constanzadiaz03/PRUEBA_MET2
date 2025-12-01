@@ -53,7 +53,7 @@ def login():
     user = cursor.fetchone()
     conn.close()
 
-    if user and bcrypt.check_password_hash(user["password"], password):
+    if user and user["password"] == password:
         token = create_access_token(identity=email)
         return jsonify({"token": token})
     else:

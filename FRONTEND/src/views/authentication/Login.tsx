@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -8,27 +9,25 @@ export default function Login() {
   const [show, setShow] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const res = await fetch("http://127.0.0.1:5000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  });
+    const res = await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ email, password }),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
+    console.log("respuesta backend:", data);
 
-  if (data.status === "ok") {
-    console.log("Login correcto");
-    navigate("/");
-  } else {
-    alert("Credenciales inválidas");
-  }
+    if (data.status === "success") {
+      toast.success("Bienvenido 👋");
+      navigate("/");
+    } else {
+      toast.error("Credenciales incorrectas");
+    }
   };
-
-
+  
   return (
     <div className="w-full h-screen bg-white flex flex-col overflow-hidden">
       <div className="flex-1 overflow-y-auto no-scrollbar px-6 pt-8">
@@ -77,7 +76,7 @@ export default function Login() {
             <Link to="/auth/forgot-password" className="text-sm text-[#0A84FF]">Olvidaste tu contraseña?</Link>
           </div>
 
-          <button className="w-full bg-[#0A84FF] text-white py-3 rounded-xl mt-2">Iniciar</button>
+          <button type="submit" className="w-full bg-[#0A84FF] text-white py-3 rounded-xl mt-2">Iniciar</button>
 
           <div className="text-center text-sm text-[#7D848D]">
             ¿No tienes una cuenta? <Link to="/auth/register" className="text-[#0A84FF]">Registrarse</Link>
